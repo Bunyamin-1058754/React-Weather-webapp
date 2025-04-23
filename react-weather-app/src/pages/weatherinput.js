@@ -19,7 +19,7 @@ function WeatherInput() {
     const settingsId = Cookies.get('settingsId');
     console.log(`Settings ID from cookie: ${settingsId}`);
     if (settingsId) {
-      axios.get(`http://127.0.0.1:5000/get_settings/${settingsId}`)
+      axios.get(`/api/get_settings/${settingsId}`)
         .then(response => {
           const data = response.data;
           console.log("Settings data:", data)
@@ -46,7 +46,7 @@ function WeatherInput() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:5000/weather', {
+    axios.post('/api/weather', {
       city: city,
       minTemp: minTemp,
       maxTemp: maxTemp,
@@ -67,7 +67,7 @@ function WeatherInput() {
   };
 
   const getPrediction = (settings) => {
-    axios.post('http://127.0.0.1:5000/predict', settings)
+    axios.post('/api/predict', settings)
       .then(response => {
         setPrediction(response.data);
       })

@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS, cross_origin
 from datetime import datetime, timedelta
 import requests
 import config
@@ -9,8 +8,7 @@ import traceback
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///bike.db"
 db = SQLAlchemy(app)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 class WeatherData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -80,7 +78,7 @@ def check_weather_conditions(weather_data, settings):
 
     return {"data": result, "location": location, "mintemp": min_temp, "maxtemp": max_temp}
 
-@app.route('/save_settings', methods=['POST'])
+@app.route('/api/save_settings', methods=['POST'])
 def save_settings():
     data = request.get_json()
     print("Received settings data:", data)  # Log de ontvangen settings data
@@ -98,7 +96,7 @@ def save_settings():
     print("Saved settings ID:", new_settings.id)  # Log de opgeslagen settings ID
     return jsonify({"id": new_settings.id})
 
-@app.route('/get_settings/<int:id>', methods=['GET'])
+@app.route('/api/get_settings/<int:id>', methods=['GET'])
 def get_settings_route(id):
     print("Fetching settings for ID:", id)  # Log de opgevraagde settings ID
     settings = WeatherData.query.get(id)
@@ -115,8 +113,7 @@ def get_settings_route(id):
         return jsonify(response)
     return jsonify({"error": "No settings found"}), 404
 
-@app.route('/weather', methods=['POST'])
-@cross_origin("http://localhost:3000")
+@app.route('/api/weather', methods=['POST'])
 def add_weather_data():
     data = request.get_json()
     print("data", data)
@@ -135,8 +132,7 @@ def add_weather_data():
     return jsonify({"id": new_weather_data.id})  # Zorg ervoor dat de ID wordt geretourneerd
     return jsonify(data)
 
-@app.route('/predict/<cookieid>', methods=['GET'])
-@cross_origin("http://localhost:3000")
+@app.route('/api/predict/<cookieid>', methods=['GET'])
 def get_weather_prediction(cookieid):
     try:
         print(f"Fetching weather prediction for {cookieid}")  # Log de stad waarvoor voorspellingen worden opgehaald
