@@ -1,101 +1,113 @@
-### Bike Weather Predictor
+# Bike Weather Predictor
 
-## Introduction
-This project is a web application that predicts if the weather is good enough to comfortably ride a bike based on the current weather conditions in the city of choice. Users can configure weather settings for example; minimum and maximum temperatures, maximum wind speed, rain chance, snow chance and get predictions for biking conditions in their city.
+## Overview
 
-## Available Scripts
-In the project directory, you can run:
+Bike Weather Predictor is a fullstack web application that helps users decide whether it's suitable to bike based on weather forecasts. Built with a Flask backend and a React (Vite) frontend, the app allows users to configure thresholds like temperature, wind, and precipitation, and provides 3-day predictions for their selected city.
 
-### `npm start`
-Runs the app in the development mode.
-Open http://localhost:3000 to view it in your browser.
+## Features
 
-The page will reload when you make changes.
-You may also see any lint errors in the console.
+- Custom Weather Settings: Users can set thresholds for minimum and maximum temperature, wind speed, rain chance, and snow chance.
+- 3-Day Forecast: The app fetches real-time weather data from OpenWeather and analyzes biking conditions for the next 3 days.
+- Live Weather View: A separate weather section allows users to check general forecasts without prediction logic.
+- Smart UI: Users receive instant feedback after submitting their preferences.
 
-### npm test
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
+## Quick Start
 
-### npm run build
-Builds the app for production to the build folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-Your app is ready to be deployed!
+- Python 3.12+
+- Git
+- Node.js and npm
+- Virtual environment tool (`venv` or `virtualenv`) recommended
 
-See the section about deployment for more information.
+## Installation and Setup
 
-### Key Features
+### 1. Clone the Repository
 
-1:Weather Configuration: Users can set minimum and maximum temperature, maximum wind speed, rain chance, and snow chance.
-2:Weather Prediction: The application fetches weather data and predicts biking conditions for the next three days.
-3:Weather Application: This is an extra function that checks the weather normally, like you used to on your mobile device. 
+git clone https://github.com/yourusername/bike-weather-app.git cd bike-weather-app
 
-### Requirements
-- Python (version 3.12.0) Download Python
-- Git (version 2.44.0) Download Git
-- Flask
-- Virtual environment (venv/virtualenv)
+shell
+Kopiëren
+Bewerken
 
-## Installation
-To get started with the Flask backend, follow these steps:
+### 2. Backend Setup
 
-1. **Clone the Repository:**
-git clone https://github.com/yourusername/bike-indicator.git
-cd bike-indicator
-2. **Create and Activate a Virtual Environment:**
-pip install virtualenv
-virtualenv venv
-.\venv\Scripts\activate
-3. **Install Required Packages:**
+cd backend python -m venv venv venv\Scripts\activate # On Windows source venv/bin/activate # On macOS/Linux
+
 pip install -r requirements.txt
-Run the Flask server:
 
-4. **Run the Flask Server:**
-python main.py -- run button
+shell
+Kopiëren
+Bewerken
 
-## Usage of application
--- backend startup:
-1. start the backend with flask, run the following command: run -- flask start
-2. your port should start on your local server at port 5000
-3. Google chrome should be opened by default 
--- frontend startup:
-4. to start the frontend with React.JS., run the following command to go one up higher in the files: cd react-weather-app
-5. npm -- run start react-weather-app
-6. your port should start on your local server at port 3000
-7. you should arrive automatically on the weather app.
-8. ready to use!
+### 3. Frontend Setup
+
+cd ../frontend npm install
+
+bash
+Kopiëren
+Bewerken
+
+## Running the Application
+
+In the `/frontend` directory, run:
+
+npm run start
+
+csharp
+Kopiëren
+Bewerken
+
+This command will:
+
+- Start the Flask backend on http://localhost:5000
+- Start the React frontend on http://localhost:5173
+
+Open your browser to http://localhost:5173 to use the application.
+
+## Folder Structure
+
+project-root/ ├── backend/ # Flask backend │ ├── main.py │ ├── config.py │ └── bike.db ├── frontend/ # React + Vite frontend │ ├── index.html │ ├── vite.config.js │ └── src/ │ ├── App.jsx │ ├── components/ │ └── pages/
+
+yaml
+Kopiëren
+Bewerken
+
+## API Endpoints
 
 ### Backend (Flask)
-The backend is built using Flask and SQLAlchemy. It interacts with the SQLite database to store user configurations and fetches weather data from the OpenWeather API.
 
-- **POST /weather:** Add new weather configuration settings.
-- **GET /predict/<city>:** Get weather predictions for the specified city.
+| Method | Route                     | Description                            |
+|--------|---------------------------|----------------------------------------|
+| POST   | /api/weather              | Save custom weather settings           |
+| GET    | /api/predict/<cookieid>   | Get 3-day prediction based on settings |
+| GET    | /api/get_settings/<id>    | Retrieve saved settings by ID          |
 
-### Frontend (React)
+## Frontend (React + Vite)
 
-- **Weather App:** Users can search for the weather to there liking.
-- **Weatherinput:** User can put in there requirements to their liking and save these settings to the database.
-- **Result page:** Displays current weather predictions.
+- Built with React and Vite
+- Uses Axios for API requests
+- Proxy is configured in `vite.config.js` to redirect `/api` requests to the Flask backend
 
 ## References
 
-- [OpenWeather API](https://openweathermap.org/api)
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [React Documentation](https://reactjs.org/)
+- OpenWeather API: https://openweathermap.org/api
+- Flask Documentation: https://flask.palletsprojects.com/
+- Vite: https://vitejs.dev/
+- React Documentation: https://reactjs.org/
+
 ## AI Assistance
 
-For code formatting and assistance, the following AI tools were used:
-
 - ChatGPT
-- GitHub Co-pilot
+- GitHub Copilot
 
 ## Version History
 
-- **Repository Created:** Juli 23, 2023
-- **Initial Version Released:** June 4, 2024
+- Initial version: July 23, 2023
+- Fullstack Flask + Vite version: April 2025
 
-## Developer Information
+## Developer
 
-- **Developer:** Bünyamin E. Bölükbas
-- **Student Number:** 1058754
+Developer: Bünyamin E. Bölükbaşı  
+Student ID: 1058754  
+Location: Utrecht, Netherlands
