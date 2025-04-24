@@ -26,37 +26,21 @@ Bike Weather Predictor is a fullstack web application that helps users decide wh
 
 git clone https://github.com/yourusername/bike-weather-app.git cd bike-weather-app
 
-shell
-Kopiëren
-Bewerken
-
 ### 2. Backend Setup
 
 cd backend python -m venv venv venv\Scripts\activate # On Windows source venv/bin/activate # On macOS/Linux
 
 pip install -r requirements.txt
 
-shell
-Kopiëren
-Bewerken
-
 ### 3. Frontend Setup
 
 cd ../frontend npm install
-
-bash
-Kopiëren
-Bewerken
 
 ## Running the Application
 
 In the `/frontend` directory, run:
 
 npm run start
-
-csharp
-Kopiëren
-Bewerken
 
 This command will:
 
@@ -68,10 +52,6 @@ Open your browser to http://localhost:5173 to use the application.
 ## Folder Structure
 
 project-root/ ├── backend/ # Flask backend │ ├── main.py │ ├── config.py │ └── bike.db ├── frontend/ # React + Vite frontend │ ├── index.html │ ├── vite.config.js │ └── src/ │ ├── App.jsx │ ├── components/ │ └── pages/
-
-yaml
-Kopiëren
-Bewerken
 
 ## API Endpoints
 
@@ -104,7 +84,7 @@ Bewerken
 ## Version History
 
 - Initial version: July 23, 2023
-- Fullstack Flask + Vite version: April 2025
+- Latest updated version: April 2025
 
 ## Developer
 
