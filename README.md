@@ -51,7 +51,18 @@ Open your browser to http://localhost:5173 to use the application.
 
 ## Folder Structure
 
-project-root/ ├── backend/ # Flask backend │ ├── main.py │ ├── config.py │ └── bike.db ├── frontend/ # React + Vite frontend │ ├── index.html │ ├── vite.config.js │ └── src/ │ ├── App.jsx │ ├── components/ │ └── pages/
+project-root/ 
+├── backend/ # Flask backend │ 
+├── main.py │ 
+├── config.py │ 
+└── bike.db 
+├── frontend/ # React + Vite frontend │ 
+├── index.html │ 
+├── vite.config.js │ 
+└── src/ │ 
+├── App.jsx │ 
+├── components/ │ 
+└── pages/
 
 ## API Endpoints
 
